@@ -102,19 +102,20 @@
                 <div class="col-md-6 wow slideInLeft">
                     <div class="contact_form">
                         <h3><i class="fa fa-envelope-o grd1 global-radius"></i> QUICK APPOINTMENT</h3>
-                        <form action="https://robort-php-d852808cdf62.herokuapp.com/contact.php" id="contactform1" class="row" name="contactform" method="post">
+                        <!-- action="https://robort-php-d852808cdf62.herokuapp.com/contact.php" -->
+                        <form id="contactForm" class="row" name="contactform" method="post">
                             <fieldset class="row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="first_name1" id="first_name1" class="form-control" placeholder="First Name">
+                                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="last_name1" id="last_name1" class="form-control" placeholder="Last Name">
+                                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="email1" id="email1" class="form-control" placeholder="Your Email">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="phone1" id="phone1" class="form-control" placeholder="Your Phone">
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                                     <input type="submit" value="Get an Appointment" class="btn btn-light btn-radius btn-brd grd1 btn-block">
@@ -344,5 +345,52 @@
    <!-- MAP & CONTACT -->
     <script src="js/map.js"></script>
 
+
+    <script type="module">
+    
+    
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+            
+        const firebaseConfig = {
+            apiKey: "AIzaSyDTUeKeSxUC-RGsbXiqLNJt4rTakKDN520",
+            authDomain: "robertjobs96-bac39.firebaseapp.com",
+            projectId: "robertjobs96-bac39",
+            storageBucket: "robertjobs96-bac39.appspot.com",
+            messagingSenderId: "475274738741",
+            appId: "1:475274738741:web:a481c6051bfea1bb6c857c",
+            measurementId: "G-YJSXJ7Z4EV"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            // const message = document.getElementById('message').value;
+
+            db.collection('appointments').add({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                created_at: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                alert('Appointment saved successfully!');
+                document.getElementById('contactForm').reset();
+            }).catch(error => {
+                console.error('Error saving appointment: ', error);
+            });
+        });
+    </script>
 </body>
 </html>
