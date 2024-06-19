@@ -165,6 +165,7 @@
         
     }
     body.realestate_version .header_style_01 {
+        position: relative;
         background-color: #ffffff;
     }
     .footer .col-xs-12 {
@@ -294,6 +295,9 @@
 		margin-bottom: 30px;
         margin-top: 80px;
 	}
+    .big-tagline.clearfix {
+        display: none !important;
+    }
 }
 
 @media (max-width: 768px) {
