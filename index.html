@@ -58,7 +58,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!-- <a class="navbar-brand" href="index.html"><img src="images/logos/logo.png" alt="image"></a> -->
+                    <!-- <a class="navbar-brand" href="index.html"><img src="uploads/investor.png" alt="image"></a> -->
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -103,19 +103,22 @@
                     <div class="contact_form">
                         <h3><i class="fa fa-envelope-o grd1 global-radius"></i> QUICK APPOINTMENT</h3>
                         <!-- action="https://robort-php-d852808cdf62.herokuapp.com/contact.php" -->
+                        <div id="form-loader-cont">
+                            <div id="form-loader" class="form-loader"></div>
+                        </div>
                         <form id="contactForm" class="row" name="contactform" method="post">
                             <fieldset class="row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
+                                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name" required>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone" required>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                                     <input type="submit" value="Get an Appointment" class="btn btn-light btn-radius btn-brd grd1 btn-block">
@@ -378,6 +381,8 @@
             // const message = document.getElementById('message').value;
 
             try {
+                var formLoader = document.getElementById('form-loader-cont');
+                formLoader.style.display = 'block';
                 await addDoc(collection(db, 'appointments'), {
                     firstName: firstName,
                     lastName: lastName,
@@ -385,9 +390,11 @@
                     phone: phone,
                     created_at: serverTimestamp()
                 });
+                formLoader.style.display = 'none';
                 alert('Appointment saved successfully!');
-                document.getElementById('appointmentForm').reset();
+                document.getElementById('contactForm').reset();
             } catch (error) {
+                formLoader.style.display = 'none';
                 console.error('Error saving appointment: ', error);
             }
         });
