@@ -162,9 +162,6 @@
     body.realestate_version .property-detail .col-md-2 {
         margin: 15px 0;
     }
-    body.realestate_version .first-section {
-        
-    }
     body.realestate_version .header_style_01 {
         position: relative;
         background-color: #ffffff;
@@ -307,6 +304,10 @@
     .big-tagline.clearfix {
         background-color: #1f1f1f54;
         margin-top: 10px;
+    }
+    .contact_form .form-control {
+        margin-bottom: 5px;
+        height: 35px;
     }
 }
 

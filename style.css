@@ -2723,6 +2723,9 @@ select.mobile-device {
 	color: #aaa;
 	font-weight: 400;
 }
+#message {
+    resize: none;
+}
 
 
 
