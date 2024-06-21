@@ -269,12 +269,17 @@
     }
     .footer-distributed {
         padding: 30px;
-        text-align: center;
+        text-align: left;
         font: bold 14px sans-serif;
+    }
+    .footer-container {
+        padding-left: 0px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
     .footer-distributed .footer-company-name {
         margin-top: 0px;
-        font-size: 8px;
+        font-size: 6.5px;
         padding: 10px 0px;
     }
     .first-section::before {
