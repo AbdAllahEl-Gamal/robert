@@ -625,14 +625,24 @@ body.realestate_version .header_style_01 .navbar-right > li.search-option form b
     background-attachment: scroll !important;
     display: block;
     height: auto;
-    min-height: 65%;
+    min-height: 100%;
     overflow: hidden;
     position: relative;
     background-position: center center;
     vertical-align: sub;
     width: 100%;
     padding-top: 20px;
+    padding-bottom: 10px;
     z-index: 2;
+}
+
+.white-text {
+    color: #ffffff;
+}
+
+.goals-header {
+    padding-bottom: 25px;
+    font-size: 20px;
 }
 
 .about-us-text {
