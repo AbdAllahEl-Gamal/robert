@@ -625,13 +625,18 @@ body.realestate_version .header_style_01 .navbar-right > li.search-option form b
     background-attachment: scroll !important;
     display: block;
     height: auto;
-    min-height: 100%;
+    min-height: 65%;
     overflow: hidden;
     position: relative;
     background-position: center center;
     vertical-align: sub;
     width: 100%;
+    padding-top: 20px;
     z-index: 2;
+}
+
+.about-us-text {
+    text-align: justify;
 }
 
 .no-scroll-xy {
@@ -743,7 +748,7 @@ body.realestate_version .header_style_01 .navbar-right > li.search-option form b
     font-size: 42px;
     font-weight: 300;
     line-height: 62px;
-    margin: 0 0 25px;
+    /* margin: 0 0 25px; */
     padding: 0;
     text-transform: none;
 }
@@ -1419,7 +1424,7 @@ body.realestate_version .header_style_01 .navbar-right > li.search-option form b
 
 .post-media {
     position: relative;
-	border: 8px solid #241752;	
+	border: 8px solid #43299c;
 }
 
 .post-media img {
